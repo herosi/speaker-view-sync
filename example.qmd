@@ -1,0 +1,82 @@
+---
+title: "Speaker-view-sync Example"
+mathjax: false
+overview: false
+menu: false
+progress: false
+format:
+  revealjs: 
+    aspect-ratio: 16:9
+    width: 1152
+    height: 648
+revealjs-plugins:
+  - speaker-view-sync
+---
+
+## Description
+
+- This is a sample plugin to send a message to/from the speaker view.
+- Although the plugin itself is meaningless, you can extend this plugin to implement a plugin that synchronizes data between the main window and the speaker view.
+  - e.g. laser pointer like powerpoint
+  - This plugin just sends "test" from a window to another.
+
+## Usage {.smaller}
+
+1. Add this plugin to the front matter of a `.qmd` file or `_quarto.yaml`, as shown below.
+   ``` yaml
+   revealjs-plugins:
+     - speaker-view-sync
+   ```
+2. Open the html rendered and the speaker view by pressing "S"
+3. Press "Ctrl" on a window
+4. The message will be displayed on a web browser console.
+   - press "F12" to open it.
+  
+:::: {.columns}
+::: {.column}
+![On SPEAKER](./message_from_main.dio.png)
+:::
+
+::: {.column}
+![On MAIN](./message_from_speaker.dio.png)
+:::
+::::
+
+
+## How to Change the Message to Send and Receive
+
+You can modify the code here to change what data is sent/received and how they are done.
+
+
+:::: {.columns}
+::: {.column}
+``` javascript {code-line-numbers=false}
+// Send a message by pressing the Ctrl key
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Control') {
+    // Write your message to send here.
+    const message = {
+      namespace: 'reveal-sync',
+      type: 'test',
+      from: windowType,
+      timestamp: Date.now()
+    };
+```
+:::
+::: {.column}
+``` javascript {code-line-numbers=false}
+// Process a received message on reveal-sync
+if (data && data.namespace === 'reveal-sync') {
+  // Process your data received here
+  // ...
+  if (data.type == 'keepalive') {
+    if (currentSlideWindow !== event.source) {
+      currentSlideWindow = event.source;
+    }
+  } else {
+    console.log(`[${windowType}] 🎯 Received:`, data.type, 'from:', data.from);
+  }
+}
+```
+:::
+::::
