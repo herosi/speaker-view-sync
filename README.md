@@ -15,27 +15,21 @@ quarto add herosi/speaker-view-sync
 This will install the extension under the `_extensions` subdirectory.
 If you're using version control, you will want to check in this directory.
 
-## Using {.smaller}
+## Using
 
 1. Add this plugin to the front matter of a `.qmd` file or `_quarto.yaml`, as shown below.
    ``` yaml
    revealjs-plugins:
      - speaker-view-sync
    ```
-2. Open the html rendered and the speaker view by pressing "S"
-3. Press "Ctrl" on a window
+2. Open the html rendered and the speaker view by pressing `S`
+3. Press `Ctrl` on a window
 4. The message will be displayed on a web browser console.
-   - press "F12" to open it.
+   - press `F12` to open it.
   
-:::: {.columns}
-::: {.column}
 ![On SPEAKER](./message_from_main.dio.png)
-:::
 
-::: {.column}
 ![On MAIN](./message_from_speaker.dio.png)
-:::
-::::
 
 
 ## Known Issue
@@ -45,6 +39,6 @@ In that case, close the Speaker View, reload the main window, and then reopen th
 
 ## Example
 
-Here is the source code for a minimal example: [example.qmd](example.qmd). View an example presentation at [example.html](demo/example.html). Press 'Ctrl' to send/receive the messages.
+Here is the source code for a minimal example: [example.qmd](example.qmd). View an example presentation at [example.html](https://herosi.github.io/speaker-view-sync/demo/example.html). Press `Ctrl` to send/receive the messages.
 
 
