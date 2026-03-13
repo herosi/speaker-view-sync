@@ -32,11 +32,6 @@ If you're using version control, you will want to check in this directory.
 ![On MAIN](./message_from_speaker.dio.png)
 
 
-## Known Issue
-
-If either window is reloaded, this plugin will no longer function correctly.
-In that case, close the Speaker View, reload the main window, and then reopen the Speaker View.
-
 ## Example
 
 Here is the source code for a minimal example: [example.qmd](example.qmd). View an example presentation at [example.html](https://herosi.github.io/speaker-view-sync/demo/example.html). Press `Ctrl` to send/receive the messages.
